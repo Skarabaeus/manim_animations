@@ -25,12 +25,12 @@ class LightConeAperture(Scene):
         ap_bot = lens.get_bottom()
         lens_half_h = (ap_top[1] - ap_bot[1]) / 2
 
-        f_label = Text("f/2.8", font_size=22, color=YELLOW).next_to(lens, DOWN, buff=0.25)
-        lens_label = Text("lens", font_size=14, color=BLUE_B).next_to(lens, UP, buff=0.15)
+        f_label = Text("f/2.8", font_size=44, color=YELLOW).scale(0.5).next_to(lens, DOWN, buff=0.25)
+        lens_label = Text("lens", font_size=28, color=BLUE_B).scale(0.5).next_to(lens, UP, buff=0.15)
 
         # Aperture brace
         ap_brace = Brace(lens, direction=LEFT, buff=0.05)
-        ap_brace_label = Text("aperture", font_size=12, color=BLUE_B).next_to(
+        ap_brace_label = Text("aperture", font_size=24, color=BLUE_B).scale(0.5).next_to(
             ap_brace, LEFT, buff=0.05)
 
         # === Sensor plane (reference line) ===
@@ -39,7 +39,7 @@ class LightConeAperture(Scene):
             np.array([SENSOR_X, -2.3, 0]),
             color=GRAY, dash_length=0.1, stroke_opacity=0.5
         )
-        sp_label = Text("sensor plane", font_size=12, color=GRAY_B).next_to(
+        sp_label = Text("sensor plane", font_size=24, color=GRAY_B).scale(0.5).next_to(
             sensor_plane.get_top(), UP, buff=0.1)
 
         # === Light cone (aperture → image area at sensor plane) ===
@@ -74,16 +74,16 @@ class LightConeAperture(Scene):
                               fill_opacity=0.9, stroke_width=2)
         ff_sensor.move_to([SENSOR_X, 0, 0])
         ff_text = VGroup(
-            Text("Full Frame", font_size=18, color=BLUE),
-            Text("864 mm²", font_size=14, color=BLUE_B),
+            Text("Full Frame", font_size=36, color=BLUE).scale(0.5),
+            Text("864 mm²", font_size=28, color=BLUE_B).scale(0.5),
         ).arrange(DOWN, buff=0.1).next_to(ff_sensor, RIGHT, buff=0.3)
 
         mft_sensor = Rectangle(width=0.2, height=mft_h, color=RED,
                                fill_opacity=0.9, stroke_width=2)
         mft_sensor.move_to([SENSOR_X, 0, 0])
         mft_text = VGroup(
-            Text("MFT", font_size=18, color=RED),
-            Text("225 mm²", font_size=14, color=RED_B),
+            Text("MFT", font_size=36, color=RED).scale(0.5),
+            Text("225 mm²", font_size=28, color=RED_B).scale(0.5),
         ).arrange(DOWN, buff=0.1).next_to(mft_sensor, RIGHT, buff=0.3)
 
         # === Bottom annotation slot ===
@@ -114,14 +114,14 @@ class LightConeAperture(Scene):
         self.play(GrowFromCenter(ff_sensor), FadeIn(ff_text))
 
         note = Text("FF captures the full cone — wide area at f/2.8 intensity",
-                    font_size=18, color=BLUE_A)
+                    font_size=36, color=BLUE_A).scale(0.5)
         bottom_note_position(note)
         self.play(FadeIn(note))
         self.wait(2)
 
         # 7. Swap FF → MFT
         note2 = Text("Swap to MFT — same lens, same f/2.8, smaller sensor",
-                     font_size=18, color=ORANGE)
+                     font_size=36, color=ORANGE).scale(0.5)
         bottom_note_position(note2)
         self.play(Transform(note, note2))
 
@@ -134,7 +134,7 @@ class LightConeAperture(Scene):
 
         # 8. Emphasise: cone unchanged → intensity per mm² unchanged
         note3 = Text("Cone unchanged → same intensity per mm² → same exposure",
-                     font_size=18, color=GREEN_B)
+                     font_size=36, color=GREEN_B).scale(0.5)
         bottom_note_position(note3)
         self.play(Transform(note, note3))
 
@@ -158,7 +158,7 @@ class LightConeAperture(Scene):
         self.play(outside_photons.animate.set_fill(GRAY, opacity=0.25), run_time=0.8)
 
         note4 = Text("Same lux per mm²   ·   MFT total light ≈ ¼ of FF (smaller area)",
-                     font_size=18, color=WHITE)
+                     font_size=36, color=WHITE).scale(0.5)
         bottom_note_position(note4)
         self.play(Transform(note, note4))
         self.wait(2.5)

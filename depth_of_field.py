@@ -21,7 +21,7 @@ class DepthOfFieldZone(Scene):
                             stroke_width=1.5, stroke_color=GRAY_B)
         lens_glass.move_to(lens_outer.get_right() + LEFT * 0.06)
         camera = VGroup(vf, body, lens_outer, lens_glass)
-        camera_fnum = Text("f/2.8", font_size=16, color=YELLOW).next_to(body, LEFT, buff=0.15)
+        camera_fnum = Text("f/2.8", font_size=32, color=YELLOW).scale(0.5).next_to(body, LEFT, buff=0.15)
 
         # ─── Distance axis ──────────────────────────────────────────────
         axis_start_x = lens_glass.get_center()[0] + 0.25
@@ -36,7 +36,7 @@ class DepthOfFieldZone(Scene):
             x = axis_start_x + d * meter_unit
             tick = Line([x, axis_y - 0.08, 0], [x, axis_y + 0.08, 0],
                         color=GRAY_B, stroke_width=2)
-            lbl = Text(f"{d}m", font_size=13, color=GRAY_B).next_to(tick, DOWN, buff=0.07)
+            lbl = Text(f"{d}m", font_size=26, color=GRAY_B).scale(0.5).next_to(tick, DOWN, buff=0.07)
             marker_lines.add(tick)
             marker_labels.add(lbl)
 
@@ -76,7 +76,7 @@ class DepthOfFieldZone(Scene):
         focus_x = axis_start_x + focus_d * meter_unit
         focus_line = DashedLine([focus_x, axis_y - 0.15, 0], [focus_x, 2.0, 0],
                                 color=YELLOW_B, dash_length=0.08, stroke_width=2)
-        focus_label = Text("focus (3m)", font_size=13, color=YELLOW_B).move_to([focus_x, 2.25, 0])
+        focus_label = Text("focus (3m)", font_size=26, color=YELLOW_B).scale(0.5).move_to([focus_x, 2.25, 0])
 
         # ─── DoF bands ──────────────────────────────────────────────────
         band_height = 3.2
@@ -99,16 +99,16 @@ class DepthOfFieldZone(Scene):
         mft_band = band_rect(mft_near, mft_far)
 
         # DoF width labels (placed inside the band, near top)
-        ff_dof_label = Text("DoF ≈ 0.5 m", font_size=18, color=GREEN_C)
+        ff_dof_label = Text("DoF ≈ 0.5 m", font_size=36, color=GREEN_C).scale(0.5)
         ff_dof_label.move_to([axis_start_x + 3.0, 1.5, 0])
-        mft_dof_label = Text("DoF ≈ 1.0 m   (2× wider)", font_size=18, color=GREEN_C)
+        mft_dof_label = Text("DoF ≈ 1.0 m   (2× wider)", font_size=36, color=GREEN_C).scale(0.5)
         mft_dof_label.move_to([axis_start_x + 3.0, 1.5, 0])
 
         # ─── Headers ────────────────────────────────────────────────────
         title = Text("Depth of Field — same f/2.8, same framing",
-                     font_size=24).to_edge(UP, buff=0.2)
-        mode_ff = Text("Full Frame", font_size=22, color=BLUE).next_to(title, DOWN, buff=0.15)
-        mode_mft = Text("Micro Four Thirds", font_size=22, color=RED).next_to(title, DOWN, buff=0.15)
+                     font_size=48).scale(0.5).to_edge(UP, buff=0.2)
+        mode_ff = Text("Full Frame", font_size=44, color=BLUE).scale(0.5).next_to(title, DOWN, buff=0.15)
+        mode_mft = Text("Micro Four Thirds", font_size=44, color=RED).scale(0.5).next_to(title, DOWN, buff=0.15)
 
         # ─── Animations ─────────────────────────────────────────────────
 
@@ -160,6 +160,6 @@ class DepthOfFieldZone(Scene):
 
         # 9. Summary
         summary = Text("Same f/2.8 · equivalent framing → MFT DoF ≈ 2× FF",
-                       font_size=20, color=GREEN_B).to_edge(DOWN, buff=0.4)
+                       font_size=40, color=GREEN_B).scale(0.5).to_edge(DOWN, buff=0.4)
         self.play(Write(summary))
         self.wait(3)

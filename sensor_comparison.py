@@ -11,17 +11,17 @@ class SensorSizeComparison(Scene):
         # --- Full Frame sensor ---
         ff_rect = Rectangle(width=ff_w, height=ff_h, color=BLUE)
         ff_rect.set_fill(BLUE, opacity=0.25)
-        ff_label = Text("Full Frame", font_size=24, color=BLUE).next_to(ff_rect, UP, buff=0.2)
-        ff_dim = Text("36 × 24 mm", font_size=18, color=BLUE_B).next_to(ff_rect, DOWN, buff=0.2)
+        ff_label = Text("Full Frame", font_size=48, color=BLUE).scale(0.5).next_to(ff_rect, UP, buff=0.2)
+        ff_dim = Text("36 × 24 mm", font_size=36, color=BLUE_B).scale(0.5).next_to(ff_rect, DOWN, buff=0.2)
 
         # --- MFT sensor (same center) ---
         mft_rect = Rectangle(width=mft_w, height=mft_h, color=RED)
         mft_rect.set_fill(RED, opacity=0.35)
-        mft_label = Text("Micro Four Thirds", font_size=24, color=RED).next_to(ff_rect, UP, buff=0.2)
-        mft_dim = Text("17.3 × 13 mm", font_size=18, color=RED_B).next_to(mft_rect, DOWN, buff=0.2)
+        mft_label = Text("Micro Four Thirds", font_size=48, color=RED).scale(0.5).next_to(ff_rect, UP, buff=0.2)
+        mft_dim = Text("17.3 × 13 mm", font_size=36, color=RED_B).scale(0.5).next_to(mft_rect, DOWN, buff=0.2)
 
         # --- Crop factor annotation ---
-        crop_text = Text("2× Crop Factor", font_size=22, color=YELLOW)
+        crop_text = Text("2× Crop Factor", font_size=44, color=YELLOW).scale(0.5)
         crop_text.to_edge(DOWN, buff=0.5)
 
         # Corner brackets to highlight the MFT area inside FF
@@ -54,8 +54,8 @@ class SensorSizeComparison(Scene):
         self.wait(0.8)
 
         # 3. Show both labels separated vertically
-        ff_label_static = Text("Full Frame (36×24)", font_size=20, color=BLUE).move_to(ff_rect).shift(UP * 1.6)
-        mft_label_static = Text("MFT (17.3×13)", font_size=20, color=RED).move_to(ff_rect).shift(UP * 1.2)
+        ff_label_static = Text("Full Frame (36×24)", font_size=40, color=BLUE).scale(0.5).move_to(ff_rect).shift(UP * 1.6)
+        mft_label_static = Text("MFT (17.3×13)", font_size=40, color=RED).scale(0.5).move_to(ff_rect).shift(UP * 1.2)
         self.play(
             FadeOut(mft_label),
             FadeOut(mft_dim),
