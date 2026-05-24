@@ -12,7 +12,7 @@ class DepthOfFieldZone(Scene):
         # ─── Camera ─────────────────────────────────────────────────────
         body = RoundedRectangle(width=1.0, height=0.7, corner_radius=0.08,
                                 color=GRAY_B, fill_opacity=1.0, stroke_width=2)
-        body.move_to([-5.5, camera_y, 0])
+        body.move_to([-3.5, camera_y, 0])
         vf = Rectangle(width=0.35, height=0.13, color=GRAY_C, fill_opacity=1.0, stroke_width=1)
         vf.move_to([body.get_x(), body.get_top()[1] + 0.065, 0])
         lens_outer = Rectangle(width=0.32, height=0.5, color=GRAY_C, fill_opacity=1.0, stroke_width=1)
